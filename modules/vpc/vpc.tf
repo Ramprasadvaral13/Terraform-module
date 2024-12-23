@@ -60,7 +60,7 @@ resource "aws_route_table" "module-private-rtb" {
 resource "aws_route_table_association" "module-pri-rtba" {
     for_each = {for key, subnet in var.subnets : key => subnet if subnet.public == false }
     subnet_id = aws_subnet.module-subnet[each.key].id
-    route_table_id = aws_route_table.module-private-rtb
+    route_table_id = aws_route_table.module-private-rtb.id
     
   
 }
